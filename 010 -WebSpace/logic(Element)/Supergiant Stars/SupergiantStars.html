@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Supergiant Stars - النجوم العملاقة العظمى</title>
+    <link rel="stylesheet" href="SupergiantStars.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="supergiant-container"></div>
+
+    <!-- صندوق المعلومات -->
+    <div class="info-box">
+      <h1>🌟 النجوم العملاقة العظمى</h1>
+      <p>أضخم وألمع النجوم في الكون - أكبر من الشمس بـ 1000 مرة!</p>
+      <p>🎮 حرك الماوس لاستكشاف النجم العملاق</p>
+
+      <div class="stellar-info">
+        <p>🔴 العملاق الأحمر: Betelgeuse</p>
+        <p>🔵 العملاق الأزرق: Rigel</p>
+        <p>🟡 العملاق الأصفر: Polaris</p>
+        <p>🌡️ درجة الحرارة: 3,000 - 40,000 كلفن</p>
+      </div>
+
+      <div class="stats">
+        <p>✨ قطر: 200-2000 ضعف الشمس</p>
+        <p>💡 سطوع: 10,000-1,000,000 ضعف الشمس</p>
+        <p>⚡ كتلة: 10-70 كتلة شمسية</p>
+        <p>🔥 غلاف جوي نشط ومضطرب</p>
+        <p>💫 رياح نجمية قوية</p>
+      </div>
+    </div>
+
+    <!-- أنواع النجوم -->
+    <div class="star-types">
+      <h3>اختر نوع النجم</h3>
+      <div class="star-type red" data-type="red">
+        <h4>🔴 عملاق أحمر</h4>
+        <p>بارد وضخم جداً</p>
+      </div>
+      <div class="star-type blue" data-type="blue">
+        <h4>🔵 عملاق أزرق</h4>
+        <p>ساخن ولامع</p>
+      </div>
+      <div class="star-type yellow" data-type="yellow">
+        <h4>🟡 عملاق أصفر</h4>
+        <p>متوسط الحرارة</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="solar-btn">🌍 إضافة الشمس للمقارنة</button>
+      <button id="flare-btn">⚡ إطلاق انفجار شمسي</button>
+    </div>
+
+    <script type="module" src="SupergiantStars.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

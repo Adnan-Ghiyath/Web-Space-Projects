@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Black Hole - الثقب الأسود</title>
+    <link rel="stylesheet" href="BlackHoles.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.min.js"></script>
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="blackhole-container"></div>
+
+    <!-- صندوق المعلومات الرئيسي -->
+    <div class="info-box">
+      <h1>⚫ الثقب الأسود</h1>
+      <p>لغز الكون - جاذبية لا نهائية تحني الزمكان!</p>
+      <p>
+        🎮 حرك الماوس للدوران | 🔍 تدحرج للتقريب | ⚡ شاهد تأثير الجاذبية على
+        النجوم
+      </p>
+
+      <div class="blackhole-info">
+        <p>🌀 الوظيفة: تشويه الزمكان بجاذبية هائلة</p>
+        <p>⚫ النواة: التفرد - كثافة لا نهائية</p>
+        <p>🌌 أفق الحدث: نقطة اللاعودة</p>
+        <p>💫 القرص المزود: مادة متوهجة تدور بسرعة الضوء</p>
+      </div>
+
+      <div class="stats">
+        <p>📏 نصف قطر شفارتزشيلد: يتناسب مع الكتلة</p>
+        <p>⚖️ الجاذبية: لانهائية عند التفرد</p>
+        <p>🌀 سرعة الدوران: تصل إلى 90% من سرعة الضوء</p>
+        <p>🌡️ درجة حرارة هوكينغ: متناسبة عكسياً مع الكتلة</p>
+        <p>💫 أنواع الثقوب: نجمية، فائقة الكتلة، دقيقة</p>
+        <p>🔭 ثقوب مشهورة: M87*، القوس A*</p>
+      </div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div class="controls">
+      <button id="type-btn">🌀 تبديل نوع الثقب</button>
+      <button id="accretion-btn">💫 إظهار/إخفاء القرص المزود</button>
+      <button id="lensing-btn">🌌 تأثير عدسة الجاذبية</button>
+      <button id="jets-btn">⚡ إظهار النفاثات النسبوية</button>
+      <button id="stars-btn">⭐ جذب النجوم القريبة</button>
+      <button id="auto-rotate-btn">🔄 دوران تلقائي</button>
+    </div>
+
+    <!-- لوحة أنواع الثقوب -->
+    <div class="types-panel">
+      <h3>🔬 أنواع الثقوب السوداء:</h3>
+      <div class="type-buttons">
+        <button data-type="stellar" class="type-btn active">نجمي</button>
+        <button data-type="intermediate" class="type-btn">متوسط</button>
+        <button data-type="supermassive" class="type-btn">فائق الكتلة</button>
+        <button data-type="primordial" class="type-btn">بدائي</button>
+        <button data-type="all" class="type-btn">عرض الكل</button>
+      </div>
+    </div>
+
+    <!-- لوحة معلومات الثقب -->
+    <div class="blackhole-info-box">
+      <h2 id="bh-title">الثقب الأسود النجمي</h2>
+      <p id="bh-desc">يتشكل من انهيار نجم ضخم</p>
+      <div class="bh-details">
+        <p><span>⚖️ الكتلة:</span> <span id="bh-mass">5-20 كتلة شمسية</span></p>
+        <p><span>📏 نصف القطر:</span> <span id="bh-radius">15-60 كم</span></p>
+        <p>
+          <span>🌀 سرعة الدوران:</span>
+          <span id="bh-spin">تصل إلى 90% من سرعة الضوء</span>
+        </p>
+        <p>
+          <span>🌡️ درجة حرارة هوكينغ:</span> <span id="bh-temp">10⁻⁸ كلفن</span>
+        </p>
+        <p>
+          <span>💫 العمر:</span>
+          <span id="bh-age">ملايين إلى مليارات السنين</span>
+        </p>
+        <p>
+          <span>🔬 الخصائص:</span>
+          <span id="bh-props">تفرد، أفق حدث، إشعاع هوكينغ</span>
+        </p>
+      </div>
+      <button class="close-bh-btn">✕ إغلاق</button>
+    </div>
+
+    <!-- شريط المعلومات السفلي -->
+    <div class="bottom-info">
+      <div class="data-display">
+        <span>⚖️ الكتلة: <span id="mass-value">10 كتل شمسية</span></span>
+        <span>📏 نصف القطر: <span id="radius-value">30 كم</span></span>
+        <span
+          >🌀 سرعة الدوران: <span id="spin-value">85% سرعة الضوء</span></span
+        >
+        <span
+          >🌡️ درجة حرارة هوكينغ: <span id="hawking-value">10⁻⁸ ك</span></span
+        >
+      </div>
+    </div>
+
+    <!-- تأثيرات خاصة -->
+    <div class="effects-overlay">
+      <div class="gravity-warning hidden" id="gravity-warning">
+        ⚠️ تحذير: الاقتراب الشديد من أفق الحدث!
+      </div>
+      <div class="time-dilation hidden" id="time-dilation">
+        ⏳ تمدد الزمن: 1 ثانية هنا = <span id="time-ratio">10 ثوان</span> بعيداً
+      </div>
+    </div>
+
+    <script type="module" src="BlackHoles.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

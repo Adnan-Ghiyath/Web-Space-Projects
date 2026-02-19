@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Moon - القمر</title>
+    <link rel="stylesheet" href="Moon.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="moon-container"></div>
+
+    <!-- صندوق المعلومات -->
+    <div class="info-box">
+      <h1>🌙 القمر</h1>
+      <p>القمر الطبيعي للأرض - رفيقنا في الظلام!</p>
+      <p>🎮 حرك الماوس لاستكشاف سطح القمر</p>
+
+      <div class="moon-info">
+        <p>🌑 أطوار القمر: 8 أطوار رئيسية</p>
+        <p>🏔️ أعلى جبل: 10,786 متر</p>
+        <p>🕳️ الفوهات: آلاف الفوهات الصدمية</p>
+        <p>🌡️ درجة الحرارة: -173°C إلى 127°C</p>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <p>📏 القطر: 3,474 كم</p>
+      <p>🔄 يوم قمري: 27.3 يوم أرضي</p>
+      <p>🌍 المسافة عن الأرض: 384,400 كم</p>
+      <p>⚖️ الجاذبية: 1/6 جاذبية الأرض</p>
+      <p>🌙 العمر: 4.5 مليار سنة</p>
+      <p>👨‍🚀 زيارات البشر: 12 رائد فضاء</p>
+    </div>
+
+    <script type="module" src="Moon.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="Adnan,IAdnan,Adnan project,IAdnan Ai, Programer, web development"
+    />
+    <meta property="og:title" content="IAdnan" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:description"
+      content="Adnan personal website (Programer) Click
+    to Know More"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@IAdnan" />
+    <meta
+      name="twitter:image:alt"
+      content="Adnan personal website (Programer) Click to Know More"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="revisit-after" content="20 days" />
+    <meta name="author" content="Adnan" />
+    <meta name="copyright" content="Copyright 2026 Adnan" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="A Ai project for Adnan " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دردشة Groq AI</title>
+    <link rel="stylesheet" href="IAdnan_Ai.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <!-- العنوان -->
+      <div class="header-section">
+        <div class="title-container">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+            <circle cx="12" cy="2" r="1"></circle>
+            <path d="M12 3v5"></path>
+          </svg>
+          <h1 class="main-title">دردشة IAdnan AI</h1>
+        </div>
+        <p class="subtitle">محادثة ذكية مع 14 تخصص مختلف</p>
+      </div>
+
+      <!-- نافذة المحادثة -->
+      <div class="chat-panel">
+        <!-- رأس المحادثة -->
+        <div class="chat-header">
+          <div class="chat-info">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+              <circle cx="12" cy="2" r="1"></circle>
+              <path d="M12 3v5"></path>
+            </svg>
+            <div>
+              <h3>IAdnan</h3>
+              <p id="categoryLabel">جاهز للمساعدة</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- منطقة الرسائل -->
+        <div class="messages-container" id="messagesContainer">
+          <div class="empty-state">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+              <circle cx="12" cy="2" r="1"></circle>
+              <path d="M12 3v5"></path>
+            </svg>
+            <p class="empty-title">مرحباً بك!</p>
+            <p class="empty-text">اختر موضوعاً وابدأ المحادثة</p>
+          </div>
+        </div>
+
+        <!-- حقل الإدخال -->
+        <div class="input-container">
+          <!-- زر اختيار الموضوع - في أقصى اليمين -->
+          <div class="topic-selector">
+            <button class="topic-button" id="topicButton">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <span id="topicButtonText">موضوع</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="topic-menu" id="topicMenu">
+              <!-- سيتم ملؤها من JavaScript -->
+            </div>
+          </div>
+
+          <!-- حقل الكتابة -->
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="اكتب رسالتك هنا..."
+            autocomplete="off"
+          />
+
+          <!-- زر الإرسال -->
+          <button class="send-button" id="sendButton">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="IAdnan_Ai.js"></script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Comets - المذنبات</title>
+    <link rel="stylesheet" href="Asteroids.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+       <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+     <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+
+    
+
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+
+    <div id="comets-container"></div>
+
+    <!-- صندوق المعلومات -->
+    <div class="info-box">
+      <h1>☄️ المذنبات</h1>
+      <p>كرات الثلج القذرة - رسل من حافة النظام الشمسي!</p>
+      <p>🎮 حرك الماوس لمشاهدة المذنب من زوايا مختلفة</p>
+
+      <div class="comet-info">
+        <p>❄️ النواة: جليد وصخور ومعادن</p>
+        <p>☁️ الهالة: غاز وغبار متوهج</p>
+        <p>💨 الذيل الأيوني: أزرق ومستقيم</p>
+        <p>🌫️ الذيل الغباري: أصفر ومنحني</p>
+      </div>
+    </div>
+</div>
+    <div class="controls">
+      <button id="speed-btn">⚡ تسريع الحركة</button>
+      <button id="tail-btn">💨 تكثيف الذيل</button>
+      <button id="particles-btn">✨ إضافة جزيئات</button>
+    </div>
+<div class="stats">
+        <p>📏 النواة: 1-50 كم قطر</p>
+        <p>🌊 الذيل: ملايين الكيلومترات</p>
+        <p>⚡ السرعة: 40-50 km/s</p>
+        <p>🌡️ درجة الحرارة: -200°C</p>
+        <p>🔄 المدار: إهليلجي متطرف</p>
+        <p>☄️ مذنبات مشهورة: هالي، هيل-بوب</p>
+      </div>
+  
+
+    <script type="module" src="Asteroids.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

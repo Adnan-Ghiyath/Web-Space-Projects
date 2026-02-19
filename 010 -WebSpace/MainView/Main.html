@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Project</title>
+    <link rel="stylesheet" href="Main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+       <link
+      rel="icon"
+      href="../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر التحكم في الـ Header -->
+    <button
+      class="header-toggle"
+      id="headerToggle"
+      aria-label="إظهار/إخفاء شريط التنقل"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="layout">
+      <!-- HEADER -->
+      <header class="header" id="mainHeader">
+        <div class="header-badge">
+          <i class="fas fa-rocket"></i> رحلة سريعة عبر الكون
+        </div>
+        <div class="rail-container">
+          <nav class="rail-top" aria-label="استكشاف الكون">
+            <!-- سيتم إضافة عناصر التنقل هنا -->
+          </nav>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="main" id="mainContent">
+        <!-- قسم فريق العمل -->
+        <section class="section-container" id="team">
+          <div class="section-title">
+            <h2>فريق العمل</h2>
+          </div>
+          <div class="team-container">
+            <div class="cards-grid">
+              <!-- بطاقة شخص 1 -->
+              <div class="person-card">
+                <div class="team-badge">جامع المعلومات</div>
+                <div class="person-image">م</div>
+                <div class="person-name">محمد بشير حسان</div>
+                <div class="person-role">باحث في الفلك</div>
+                <div class="contact-info">
+                  <a href="#" class="contact-btn" title="البريد الإلكتروني">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الهاتف">
+                    <i class="fas fa-phone"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الملف الشخصي">
+                    <i class="fas fa-user"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- بطاقة شخص 2 -->
+              <div class="person-card">
+                <div class="team-badge">صاحب الفكرة</div>
+                <div class="person-image">ع</div>
+                <div class="person-name">عبد الصمد مبارك</div>
+                <div class="person-role">مصمم المشروع</div>
+                <div class="contact-info">
+                  <a href="#" class="contact-btn" title="البريد الإلكتروني">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الهاتف">
+                    <i class="fas fa-phone"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الملف الشخصي">
+                    <i class="fas fa-user"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- بطاقة شخص 3 -->
+              <div class="person-card">
+                <div class="team-badge">⭐ المطور الرئيسي</div>
+                <div class="person-image">ع</div>
+                <div class="person-name">عدنان غياث عثمان</div>
+                <div class="person-role">مدير المشروع & المطور</div>
+                <div class="contact-info">
+                  <a href="#" class="contact-btn" title="البريد الإلكتروني">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الهاتف">
+                    <i class="fas fa-phone"></i>
+                  </a>
+                  <a href="#" class="contact-btn" title="الملف الشخصي">
+                    <i class="fas fa-user"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم الفكرة -->
+        <section class="section-container" id="idea">
+          <div class="section-title">
+            <h2>الفكرة والهدف</h2>
+          </div>
+          <div class="content-box">
+            <div class="question">فكرة هذا المشروع الكوني</div>
+            <div class="answer">
+              يهدف هذا المشروع إلى
+              <span class="highlight">إظهار عظمة خلق الله سبحانه وتعالى</span>،
+              والتأمل في دقة صنعه وإبداعه، والتفكر في قدرته اللامتناهية التي
+              تتجلى في كل ذرة من ذرات هذا الكون الفسيح. كما يُعد المشروع موعظة
+              للإنسان ليدرك ضآلة حجمه وضعفه أمام عظمة الخالق وسعة ملكوته.
+              <br /><br />
+              يجمع المشروع بين
+              <span class="highlight">علوم الفلك الحديثة</span> وتقنيات
+              <span class="highlight">الذكاء الاصطناعي</span> لتقديم تجربة
+              تعليمية وتأملية فريدة، تمكن المستخدم من رحلة افتراضية عبر أرجاء
+              الكون، من الغلاف الجوي للأرض إلى أبعد المجرات.
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم المحتوى التفاعلي -->
+        <section class="section-container" id="content">
+          <div class="section-title">
+            <h2>لديك أسئلة؟ اطرحها هنا!</h2>
+          </div>
+          <div class="iframe-section">
+            <div class="iframe-container">
+              <div class="iframe-header">
+                <div class="iframe-title">
+                  <i class="fas fa-globe-americas"></i> ذكاء أصتناعي خاص, تم تصميمه للأجابة على أسئلتك
+                </div>
+                <button class="fsBtn" onclick="toggleFullscreen()">
+                  <i class="fas fa-expand"></i> ملء الشاشة
+                </button>
+              </div>
+              <div class="fsWrapper">
+                <iframe
+                  src="../IAdnan_Ai/IAdnan_Ai.html"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--كيف انشء-->
+
+        <section class="section-container" id="team">
+          <div class="section-title">
+            <h2>انشئ بواسطة⚒️</h2>
+          </div>
+          <div class="team-container">
+            <div class="cards-grid">
+              <!-- بطاقة شخص 1 -->
+              <div class="person-card">
+                <div class="team-badge">صاحب الهياكل</div>
+                <img src="./MainTEX/deepseek.png" class="person-image" /><img />
+                <div class="person-name">Deepseek</div>
+                <div class="person-role">Ai</div>
+                <div class="person-role">من احدى مصدر المعلومات الاساسي</div>
+                <dav style="color: aliceblue; font-weight: 800"
+                  ><br />يستحق بعضا من الاشادة,رغم كثرة اخطائه</dav
+                >
+                <div class="contact-info">
+                  <div class="circular-progress" style="--progress: 10">
+                    <div class="progress-value">10%</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- بطاقة شخص 2 -->
+              <div class="person-card">
+                <div class="team-badge">⭐ معلمي</div>
+                <img src="./MainTEX/programmingadvices.png" class="person-image" /><img />
+                <div class="person-name">الاستاذ محمد ابو هدوهود</div>
+                <div class="person-role">صاحب قناة/منصة</div>
+                <a href="https://programmingadvices.com" title="موقع الاستاذ" target="_blank"   class="person-role">ProgramingAdvaices.com</a>
+                <dav style="color: darkgoldenrod; font-weight: 800"
+                  ><br />السبب الرئيسي في نجاح المشروع</dav
+                >
+                <div class="contact-info">
+                  <div class="circular-progress" style="--progress: 88">
+                    <div class="progress-value">80%</div>
+                  </div>
+                </div>
+              </div>
+              <!-- بطاقة شخص 3 -->
+            <div class="person-card">
+                <div class="team-badge">الزينة والشكل</div>
+                <img src="./MainTEX/images.png" class="person-image" /><img />
+                <div class="person-name">تم أعتماد الشكل و الزينة من مشاريعي السابقة</div>
+                <div class="person-role">ProgramingAdvaices.com</div>
+                <dav style="color: aliceblue; font-weight: 800"
+                  ><br />بسبب فقر المواقع وضعف الذكاء الاصتناعي على توليد شكل يليق بالموقع</dav
+                >
+                <div class="contact-info">
+                  <div class="circular-progress" style="--progress: 10">
+                    <div class="progress-value">10%</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-title">
+            <i class="fas fa-star"></i> رحلة عبر الكون
+          </div>
+          <div class="footer-description">
+            مشروع تعليمي تأملي يهدف إلى عرض عظمة الخلق ودقة الصنع الإلهي في
+            الكون الواسع
+          </div>
+          <div class="footer-verse">
+            ﴿إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ
+            وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ﴾ [آل عمران: 190]
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="Main.js"></script>
+    <script src=""></script>
+  </body>
+</html>

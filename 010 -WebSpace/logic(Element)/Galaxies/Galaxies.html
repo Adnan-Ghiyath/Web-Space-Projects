@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Galaxies - المجرات</title>
+    <link rel="stylesheet" href="Galaxies.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.min.js"></script>
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="galaxies-container"></div>
+
+    <!-- صندوق المعلومات الرئيسي -->
+    <div class="info-box">
+      <h1>🌌 المجرات</h1>
+      <p>مدن النجوم - جزر كونية تحوي المليارات من النجوم!</p>
+      <p>
+        🎮 حرك الماوس للدوران | 🔍 تدحرج للتقريب | 🌟 اضغط على المجرة لمعلومات
+        مفصلة
+      </p>
+
+      <div class="galaxy-info">
+        <p>✨ التكوين: مئات المليارات من النجوم</p>
+        <p>🌀 الأشكال: حلزونية، إهليلجية، غير منتظمة</p>
+        <p>⚫ المركز: ثقب أسود فائق الكتلة</p>
+        <p>💫 الحركة: دوران حول المركز</p>
+      </div>
+
+      <div class="stats">
+        <p>📏 الحجم: 3,000 - 300,000 سنة ضوئية</p>
+        <p>✨ عدد النجوم: 100 مليون - تريليون نجمة</p>
+        <p>🌌 المسافة بين المجرات: ملايين السنين الضوئية</p>
+        <p>🌀 سرعة الدوران: 100-300 كم/ثانية</p>
+        <p>🔭 مجرات مشهورة: درب التبانة، أندروميدا، سومبريرو</p>
+        <p>💫 المجموعات المحلية: عناقيد وعناقيد فائقة</p>
+      </div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div class="controls">
+      <button id="type-btn">🌀 تبديل نوع المجرة</button>
+      <button id="speed-btn">⚡ تغيير سرعة الدوران</button>
+      <button id="stars-btn">✨ إظهار/إخفاء النجوم</button>
+      <button id="nebula-btn">🌫️ إظهار السدم</button>
+      <button id="collision-btn">💥 محاكاة تصادم المجرات</button>
+      <button id="auto-rotate-btn">🔄 دوران تلقائي</button>
+    </div>
+
+    <!-- لوحة أنواع المجرات -->
+    <div class="types-panel">
+      <h3>🔬 أنواع المجرات:</h3>
+      <div class="type-buttons">
+        <button data-type="spiral" class="type-btn active">حلزونية</button>
+        <button data-type="elliptical" class="type-btn">إهليلجية</button>
+        <button data-type="irregular" class="type-btn">غير منتظمة</button>
+        <button data-type="lenticular" class="type-btn">عدسية</button>
+        <button data-type="barred" class="type-btn">حلزونية مصراعية</button>
+        <button data-type="all" class="type-btn">معرض المجرات</button>
+      </div>
+    </div>
+
+    <!-- لوحة معلومات المجرة -->
+    <div class="galaxy-info-box">
+      <h2 id="galaxy-title">المجرة الحلزونية</h2>
+      <p id="galaxy-desc">أذرع حلزونية جميلة تحوي مناطق تشكل نجوم جديدة</p>
+      <div class="galaxy-details">
+        <p>
+          <span>🌀 الشكل:</span> <span id="galaxy-shape">أذرع حلزونية</span>
+        </p>
+        <p>
+          <span>✨ عدد النجوم:</span>
+          <span id="galaxy-stars">100-400 مليار</span>
+        </p>
+        <p>
+          <span>📏 الحجم:</span>
+          <span id="galaxy-size">30,000-100,000 سنة ضوئية</span>
+        </p>
+        <p>
+          <span>⚫ الثقب المركزي:</span>
+          <span id="galaxy-blackhole">ثقب أسود فائق الكتلة</span>
+        </p>
+        <p>
+          <span>💫 العمر:</span> <span id="galaxy-age">10-13 مليار سنة</span>
+        </p>
+        <p>
+          <span>🔭 مثال:</span>
+          <span id="galaxy-example">درب التبانة، أندروميدا</span>
+        </p>
+      </div>
+      <button class="close-galaxy-btn">✕ إغلاق</button>
+    </div>
+
+    <!-- شريط المعلومات السفلي -->
+    <div class="bottom-info">
+      <div class="data-display">
+        <span>🌀 نوع المجرة: <span id="galaxy-type-value">حلزونية</span></span>
+        <span>✨ النجوم: <span id="stars-count">200 مليار</span></span>
+        <span
+          >📏 الحجم: <span id="galaxy-size-value">100,000 سنة ضوئية</span></span
+        >
+        <span>💫 سرعة الدوران: <span id="rotation-speed">220 كم/ث</span></span>
+      </div>
+    </div>
+
+    <!-- لوحة المجرات المشهورة -->
+    <div class="famous-galaxies hidden">
+      <h3>🔭 مجرات مشهورة:</h3>
+      <div class="famous-buttons">
+        <button data-galaxy="milkyway">🌌 درب التبانة</button>
+        <button data-galaxy="andromeda">💫 أندروميدا</button>
+        <button data-galaxy="sombrero">🎩 سومبريرو</button>
+        <button data-galaxy="whirlpool">🌀 المجرة الدوامة</button>
+        <button data-galaxy="triangulum">△ مثلث</button>
+        <button data-galaxy="close">✕ إغلاق</button>
+      </div>
+    </div>
+
+    <script type="module" src="Galaxies.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

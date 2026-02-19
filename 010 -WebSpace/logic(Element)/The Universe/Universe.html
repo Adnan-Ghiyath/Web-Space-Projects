@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Universe - الكون الشامل</title>
+    <link rel="stylesheet" href="Universe.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="universe-container"></div>
+
+    <!-- صندوق المعلومات -->
+    <div class="info-box">
+      <h1>🌐 الكون المرئي</h1>
+      <p>استكشف البنية العظمى للكون - الشبكة الكونية الضخمة!</p>
+      <p>🎮 حرك الماوس لاستكشاف الكون من كل الزوايا</p>
+
+      <div class="universe-info">
+        <p>🌌 عناقيد المجرات الفائقة</p>
+        <p>🕸️ الخيوط الكونية العملاقة</p>
+        <p>🕳️ الفراغات الكونية الشاسعة</p>
+        <p>📏 القطر: 93 مليار سنة ضوئية</p>
+      </div>
+
+      <div class="stats">
+        <p>✨ العمر: 13.8 مليار سنة</p>
+        <p>🔭 المجرات: تريليونا مجرة</p>
+        <p>💫 النجوم: 10²⁴ نجم</p>
+        <p>🌍 الكواكب: أكثر من 10²¹ كوكب</p>
+        <p>⚡ معدل التوسع: 70 km/s/Mpc</p>
+        <p>🌑 المادة المظلمة: 68% من الكون</p>
+        <p>⚛️ الطاقة المظلمة: 27% من الكون</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="rotation-btn">⚡ تسريع الدوران</button>
+      <button id="density-btn">💫 زيادة الكثافة</button>
+      <button id="dark-matter-btn">🕳️ المادة المظلمة</button>
+    </div>
+
+    <script type="module" src="Universe.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

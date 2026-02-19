@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Atmosphere - الغلاف الجوي</title>
+    <link rel="stylesheet" href="Atmosphere.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="atmosphere-container"></div>
+
+    <!-- صندوق المعلومات الرئيسي -->
+    <div class="info-box">
+      <h1>🌍 الغلاف الجوي للأرض</h1>
+      <p>درع الحياة - النظام المناخي المعقد الذي يحمينا!</p>
+      <p>
+        🎮 حرك الماوس للدوران | 🔍 تدحرج للتقريب | 🌩️ اضغط على الطبقات للمعلومات
+      </p>
+
+      <div class="atmosphere-info">
+        <p>🛡️ الوظيفة: حماية من الأشعة فوق البنفسجية</p>
+        <p>🌡️ التنظيم: الحفاظ على درجة حرارة مناسبة للحياة</p>
+        <p>💨 التكوين: نيتروجين (78%)، أكسجين (21%)، غازات أخرى</p>
+        <p>🌀 الديناميكا: أنظمة رياح، تيارات هوائية، أنماط طقس</p>
+      </div>
+
+      <div class="stats">
+        <p>📏 السماكة: حوالي 480 كم</p>
+        <p>⚖️ الضغط الجوي: 1013.25 مليبار عند سطح البحر</p>
+        <p>🌡️ درجة الحرارة: -90°C إلى +60°C</p>
+        <p>💨 سرعة الرياح: 0-500 كم/ساعة</p>
+        <p>🌈 ظواهر: شفق قطبي، أقواس قزح، غيوم ملونة</p>
+      </div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div class="controls">
+      <button id="layer-btn">🌐 تبديل طبقات الغلاف</button>
+      <button id="clouds-btn">☁️ إظهار/إخفاء السحب</button>
+      <button id="wind-btn">💨 تفعيل أنماط الرياح</button>
+      <button id="daynight-btn">🌙 تبديل الليل والنهار</button>
+      <button id="pollution-btn">🏭 إظهار التلوث الجوي</button>
+      <button id="auto-rotate-btn">🔄 دوران تلقائي</button>
+    </div>
+
+    <!-- لوحة الطبقات -->
+    <div class="layers-panel">
+      <h3>🔬 طبقات الغلاف الجوي:</h3>
+      <div class="layer-buttons">
+        <button data-layer="troposphere" class="layer-btn active">
+          التروبوسفير
+        </button>
+        <button data-layer="stratosphere" class="layer-btn">
+          الستراتوسفير
+        </button>
+        <button data-layer="mesosphere" class="layer-btn">الميزوسفير</button>
+        <button data-layer="thermosphere" class="layer-btn">الثرموسفير</button>
+        <button data-layer="exosphere" class="layer-btn">الإكسوسفير</button>
+        <button data-layer="all" class="layer-btn">عرض الكل</button>
+      </div>
+    </div>
+
+    <!-- لوحة معلومات الطبقة -->
+    <div class="layer-info-box hidden">
+      <h2 id="layer-title">طبقة التروبوسفير</h2>
+      <p id="layer-desc">الطبقة السفلية حيث تحدث معظم ظواهر الطقس</p>
+      <div class="layer-details">
+        <p><span>📏 الارتفاع:</span> <span id="layer-height">0-12 كم</span></p>
+        <p>
+          <span>🌡️ درجة الحرارة:</span>
+          <span id="layer-temp">15°C إلى -60°C</span>
+        </p>
+        <p>
+          <span>⚖️ الضغط:</span>
+          <span id="layer-pressure">1013 إلى 200 مليبار</span>
+        </p>
+        <p>
+          <span>💨 الظواهر:</span>
+          <span id="layer-phenomena">غيوم، أمطار، ثلوج، رياح</span>
+        </p>
+        <p>
+          <span>🔬 التركيب:</span>
+          <span id="layer-composition">نيتروجين، أكسجين، بخار الماء، CO2</span>
+        </p>
+        <p>
+          <span>✈️ الأنشطة:</span>
+          <span id="layer-activities">طيران مدني، طقس، حياة</span>
+        </p>
+      </div>
+      <button class="close-btn">✕ إغلاق</button>
+    </div>
+
+    <!-- شريط المعلومات السفلي -->
+    <div class="bottom-info">
+      <div class="data-display">
+        <span>🌡️ درجة الحرارة: <span id="temp-value">15°C</span></span>
+        <span>📏 الارتفاع: <span id="altitude-value">0 كم</span></span>
+        <span>💨 سرعة الرياح: <span id="wind-value">5 كم/ساعة</span></span>
+        <span>🛡️ مؤشر الأشعة فوق البنفسجية: <span id="uv-value">3</span></span>
+      </div>
+    </div>
+
+    <script type="module" src="Atmosphere .js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

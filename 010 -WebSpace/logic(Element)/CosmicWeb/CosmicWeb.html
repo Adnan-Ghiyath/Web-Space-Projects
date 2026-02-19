@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Cosmic Web - الشبكة الكونية</title>
+    <link rel="stylesheet" href="CosmicWeb.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="cosmic-container"></div>
+
+    <!-- صندوق المعلومات -->
+    <div class="info-box">
+      <h1>🕸️ الشبكة الكونية</h1>
+      <p>البنية العظمى للكون - شبكة من المجرات عبر مليارات السنين الضوئية!</p>
+      <p>🎮 حرك الماوس لاستكشاف نسيج الكون</p>
+
+      <div class="web-info">
+        <p>🌌 الخيوط الكونية: أنهار المجرات</p>
+        <p>⚫ العقد: عناقيد المجرات العظمى</p>
+        <p>🕳️ الفراغات: مناطق شاسعة خالية</p>
+        <p>📏 الحجم: مليارات السنين الضوئية</p>
+      </div>
+
+      <div class="stats">
+        <p>✨ الخيوط: خطوط كثيفة من المجرات</p>
+        <p>🔮 العقد: تقاطعات الخيوط</p>
+        <p>💫 الجدران: صفائح مسطحة</p>
+        <p>🌑 الفراغات: 90% من حجم الكون</p>
+        <p>⚡ المادة المظلمة: الهيكل الخفي</p>
+      </div>
+    </div>
+
+    <!-- بنى الشبكة -->
+    <div class="web-structures">
+      <h3>🕸️ مكونات الشبكة</h3>
+      <div class="structure-item filaments active" data-type="filaments">
+        <h4>🌀 الخيوط الكونية</h4>
+        <p>Cosmic Filaments</p>
+      </div>
+      <div class="structure-item nodes" data-type="nodes">
+        <h4>⭐ العقد المجرية</h4>
+        <p>Galaxy Nodes</p>
+      </div>
+      <div class="structure-item voids" data-type="voids">
+        <h4>🕳️ الفراغات الكونية</h4>
+        <p>Cosmic Voids</p>
+      </div>
+      <div class="structure-item walls" data-type="walls">
+        <h4>📐 الجدران المجرية</h4>
+        <p>Galaxy Walls</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="zoom-btn">🔍 تكبير/تصغير</button>
+      <button id="density-btn">💫 زيادة الكثافة</button>
+      <button id="dark-matter-btn">🕳️ المادة المظلمة</button>
+    </div>
+
+    <script type="module" src="CosmicWeb.js"></script>
+    <script type="module" src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

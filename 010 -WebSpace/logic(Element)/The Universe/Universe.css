@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+
+#universe-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.info-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  max-height: 100vh; /* يمنع الصندوق من تجاوز 80% من طول الشاشة */
+  overflow-y: auto; /* يظهر شريط السحب عند الحاجة فقط */
+
+  /* تحسينات إضافية لسلاسة التمرير */
+  scrollbar-gutter: stable;
+  padding-right: 20px; /* مسافة إضافية حتى لا يغطي الشريط النص */
+  background: rgba(0, 0, 10, 0.96);
+  backdrop-filter: blur(40px);
+  padding: 36px;
+  border-radius: 26px;
+  color: white;
+  max-width: 500px;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 120px rgba(255, 215, 0, 0.7),
+    inset 0 0 70px rgba(255, 165, 0, 0.3);
+  z-index: 10;
+  animation: universe-glow 8s ease-in-out infinite;
+}
+/* تخصيص المسار (الخلفية التي يتحرك عليها الشريط) */
+.info-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-box::-webkit-scrollbar-track {
+  background: rgba(255, 215, 0, 0.05); /* لون خفيف جداً */
+  border-radius: 10px;
+}
+
+/* تخصيص المقبض (الجزء الذي يتم سحبه) */
+.info-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ffd700, #ff8c00);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.5); /* لإعطاء ملمس أنيق */
+}
+
+.info-box::-webkit-scrollbar-thumb:hover {
+  background: #ffed4e; /* يتغير لونه عند التمرير فوقه */
+}
+@keyframes universe-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 120px rgba(255, 215, 0, 0.7),
+      inset 0 0 70px rgba(255, 165, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 180px rgba(255, 215, 0, 1),
+      inset 0 0 100px rgba(255, 165, 0, 0.5);
+  }
+}
+
+.info-box h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00, #ff6347, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 600% 600%;
+  animation: universe-gradient 7s ease infinite;
+  font-weight: 900;
+  text-shadow: 0 0 120px rgba(255, 215, 0, 1);
+}
+
+@keyframes universe-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.info-box p {
+  color: #fff8dc;
+  font-size: 1.04em;
+  line-height: 2.2;
+  margin-bottom: 14px;
+}
+
+.info-box .universe-info {
+  background: rgba(255, 215, 0, 0.2);
+  padding: 22px;
+  border-radius: 20px;
+  margin-top: 24px;
+  border-right: 7px solid #ffd700;
+  border-left: 7px solid #ff8c00;
+}
+
+.info-box .universe-info p {
+  color: #ffe4b5;
+  font-size: 0.96em;
+  margin: 11px 0;
+  font-weight: 500;
+}
+
+.info-box .stats {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 3px solid rgba(255, 215, 0, 0.6);
+  font-size: 0.95em;
+  color: #fffacd;
+}
+
+.info-box .stats p {
+  margin: 14px 0;
+  padding-right: 5px;
+}
+
+.footer-info {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 10, 0.94);
+  backdrop-filter: blur(20px);
+  padding: 24px 30px;
+  border-radius: 20px;
+  color: #ccc;
+  font-size: 0.82em;
+  text-align: left;
+  direction: ltr;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  z-index: 10;
+}
+
+.footer-info p {
+  margin: 7px 0;
+  letter-spacing: 0.9px;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 10, 0.96);
+  backdrop-filter: blur(30px);
+  padding: 28px;
+  border-radius: 22px;
+  color: white;
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  z-index: 10;
+}
+
+.controls button {
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: #000;
+  border: none;
+  padding: 18px 36px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 28px rgba(255, 215, 0, 0.8);
+  margin: 9px;
+}
+
+.controls button:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 1);
+  background: linear-gradient(135deg, #ffed4e, #ffa500);
+}
+
+.controls button:active {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .info-box {
+    max-width: 400px;
+    padding: 30px;
+    font-size: 0.95em;
+  }
+
+  .info-box h1 {
+    font-size: 3.2em;
+  }
+
+  .controls {
+    padding: 24px;
+  }
+
+  .controls button {
+    padding: 16px 30px;
+    font-size: 0.94em;
+    margin: 8px;
+  }
+}

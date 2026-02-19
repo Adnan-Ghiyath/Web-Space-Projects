@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاكاة الكواكب الغازية</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link rel="stylesheet" href="Gas_Giants.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+
+    <!-- Main Script -->
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+      <div class="loader"></div>
+      <div class="loading-text">جاري تحميل المحاكاة...</div>
+    </div>
+
+    <!-- Simulation Container -->
+    <div id="planet-container"></div>
+
+    <!-- Floating Control Toggle -->
+    <div id="control-toggle">
+      <i class="fas fa-sliders-h"></i>
+    </div>
+
+    <!-- Control Sidebar -->
+    <div class="control-sidebar" id="control-sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-cogs"></i> إعدادات المحاكاة</h2>
+        <button class="close-sidebar" id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="control-group">
+        <h3><i class="fas fa-globe"></i> اختيار الكوكب</h3>
+        <select id="planet-type">
+          <option value="jupiter">المشتري - العملاق الغازي</option>
+          <option value="saturn">زحل - ملك الحلقات</option>
+          <option value="uranus">أورانوس - العملاق الجليدي</option>
+          <option value="neptune">نبتون - الكوكب الأزرق</option>
+          <option value="exoplanet">كوكب خارجي - مشتري حار</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <h3><i class="fas fa-clock"></i> سرعة المحاكاة</h3>
+        <div class="control-row">
+          <span id="time-scale-value">1x</span>
+          <input
+            type="range"
+            id="time-scale"
+            min="0.1"
+            max="10"
+            step="0.1"
+            value="1"
+            style="flex: 1; margin: 0 15px"
+          />
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3><i class="fas fa-eye"></i> خيارات العرض</h3>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="toggle-rings" checked />
+            <i class="fas fa-circle-notch"></i> الحلقات
+          </label>
+        </div>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="toggle-moons" checked />
+            <i class="fas fa-moon"></i> الأقمار
+          </label>
+        </div>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="toggle-atmosphere" checked />
+            <i class="fas fa-cloud"></i> الغلاف الجوي
+          </label>
+        </div>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="animate-clouds" checked />
+            <i class="fas fa-wind"></i> حركة الغيوم
+          </label>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3><i class="fas fa-flask"></i> أدوات الدراسة</h3>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="toggle-magnetic-field" />
+            <i class="fas fa-magnet"></i> المجال المغناطيسي
+          </label>
+        </div>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="toggle-wind-currents" />
+            <i class="fas fa-stream"></i> التيارات الهوائية
+          </label>
+        </div>
+        <div class="control-row">
+          <label>
+            <input type="checkbox" id="study-mode" />
+            <i class="fas fa-graduation-cap"></i> وضع الدراسة
+          </label>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3><i class="fas fa-info-circle"></i> معلومات التحكم</h3>
+        <div class="data-item" style="background: none; padding: 0">
+          <div class="data-label">التحكم بالفأرة:</div>
+          <div class="data-value" style="font-size: 13px">
+            اسحب للدوران | عجلة للتصغير/التكبير
+          </div>
+        </div>
+        <div
+          class="data-item"
+          style="background: none; padding: 0; margin-top: 10px"
+        >
+          <div class="data-label">اختصارات لوحة المفاتيح:</div>
+          <div class="data-value" style="font-size: 13px">
+            1-5: الكواكب | R: الحلقات | M: الأقمار
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Panel -->
+    <div class="data-panel">
+      <div class="panel-header">
+        <h3><i class="fas fa-chart-bar"></i> البيانات العلمية</h3>
+      </div>
+
+      <div class="panel-tabs">
+        <button class="tab-btn active" data-tab="info">المعلومات</button>
+        <button class="tab-btn" data-tab="physics">الفيزياء</button>
+        <button class="tab-btn" data-tab="chemistry">الكيمياء</button>
+      </div>
+
+      <div id="info-tab" class="tab-content active">
+        <!-- Will be populated by JavaScript -->
+        <div id="planet-info"></div>
+      </div>
+
+      <div id="physics-tab" class="tab-content">
+        <!-- Will be populated by JavaScript -->
+        <div id="physical-properties"></div>
+      </div>
+
+      <div id="chemistry-tab" class="tab-content">
+        <!-- Will be populated by JavaScript -->
+        <div id="chemical-composition"></div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button
+        class="action-btn analyze"
+        id="analyze-btn"
+        title="تحليل البيانات"
+      >
+        <i class="fas fa-chart-bar"></i>
+      </button>
+      <button class="action-btn save" id="save-btn" title="حفظ التحليل">
+        <i class="fas fa-save"></i>
+      </button>
+      <button class="action-btn capture" id="capture-btn" title="التقاط صورة">
+        <i class="fas fa-camera"></i>
+      </button>
+    </div>
+
+    <!-- Study Mode Indicator -->
+    <div id="study-mode-indicator">
+      <i class="fas fa-graduation-cap"></i> وضع الدراسة نشط
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+      اضغط على <i class="fas fa-sliders-h"></i> لفتح الإعدادات | اضغط H لعرض
+      الاختصارات
+    </div>
+
+    <script>
+      // Hide loading screen
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          document.getElementById("loading-screen").style.display = "none";
+        }, 1500);
+      });
+
+      // Toggle control sidebar
+      document
+        .getElementById("control-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("control-sidebar").classList.add("active");
+        });
+
+      document
+        .getElementById("close-sidebar")
+        .addEventListener("click", function () {
+          document.getElementById("control-sidebar").classList.remove("active");
+        });
+
+      // Tab switching
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Remove active class from all tabs
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
+
+          // Add active class to clicked tab
+          this.classList.add("active");
+          const tabId = this.dataset.tab + "-tab";
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+
+      // Keyboard shortcuts help
+      document.addEventListener("keydown", function (e) {
+        if (e.key.toLowerCase() === "h") {
+          alert(`اختصارات لوحة المفاتيح:
+• 1-5: اختيار الكواكب
+• R: تبديل الحلقات
+• M: تبديل الأقمار
+• A: تبديل الغلاف الجوي
+• F: تبديل المجال المغناطيسي
+• W: تبديل التيارات الهوائية
+• C: تحريك/إيقاف الغيوم
+• S: وضع الدراسة
+• H: عرض هذه الرسالة`);
+        }
+      });
+
+      // Update JS code to use new IDs
+      document.addEventListener("DOMContentLoaded", function () {
+        // Override the update functions to use our new structure
+        const originalUpdate =
+          window.gasGiantsSimulation?.updateScientificInterface;
+
+        if (originalUpdate) {
+          window.gasGiantsSimulation.updateScientificInterface = function (
+            planetData
+          ) {
+            // Call original function
+            originalUpdate.call(this, planetData);
+
+            // Update our tabbed interface
+            this.updateDataPanel("planet-info", {
+              الاسم: planetData.name,
+              النوع: planetData.type,
+              التصنيف: planetData.classification,
+              "فترة الدوران": planetData.rotationPeriod,
+              "الفترة المدارية": planetData.orbitalPeriod,
+              "الميل المحوري": planetData.axialTilt,
+            });
+
+            this.updateDataPanel("physical-properties", {
+              الكتلة: planetData.mass,
+              "نصف القطر": planetData.radius,
+              "الجاذبية السطحية": planetData.surfaceGravity,
+              "درجة الحرارة": planetData.surfaceTemperature,
+              "البعد عن الشمس": planetData.distanceFromSun,
+            });
+          };
+        }
+      });
+    </script>
+    <script src="Gas_Giants.js" defer></script>
+    <script src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

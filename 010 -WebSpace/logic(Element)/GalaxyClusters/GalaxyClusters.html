@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galaxy Cluster Simulation - Scientific Research Tool</title>
+    <link rel="stylesheet" href="GalaxyClusters.css" />
+    <link rel="stylesheet" href="../The_Timer/The_Timer.css" />
+    <link
+      rel="icon"
+      href="../../../../MainScreen/MainScreenImage/code.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- زر الإغلاق مع العداد -->
+    <button class="close-button" id="closeBtn" onclick="closeTab()">
+      <span class="countdown" id="countdown">60</span>
+      <span>ثانية حتى الإغلاق التلقائي</span>
+      <div class="timer-circle"></div>
+    </button>
+    <!-- رسالة التحذير -->
+    <div class="warning-message" id="warningMsg">
+      ⚠️ تحذير: سيتم إغلاق الصفحة خلال <span id="warningTime">10</span> ثوانٍ!
+    </div>
+    <div id="حاوية-العناقيد"></div>
+
+    <!-- لوحة معلومات العنقود -->
+    <div
+      id="معلومات-العنقود"
+      class="لوحة-بيانات"
+      style="top: 20px; right: 20px"
+    >
+      <h3>معلومات العنقود</h3>
+      <!-- سيتم ملؤها ديناميكياً -->
+    </div>
+
+    <!-- الخصائص الفيزيائية -->
+    <div
+      id="الخصائص-الفيزيائية"
+      class="لوحة-بيانات"
+      style="top: 20px; left: 20px"
+    >
+      <h3>الخصائص الفيزيائية</h3>
+      <!-- سيتم ملؤها ديناميكياً -->
+    </div>
+
+    <!-- بيانات علمية -->
+    <div
+      id="البيانات-العلمية"
+      class="لوحة-بيانات"
+      style="bottom: 100px; right: 20px"
+    >
+      <h3>البيانات العلمية</h3>
+      <!-- سيتم ملؤها ديناميكياً -->
+    </div>
+
+    <!-- مقاييس حية -->
+    <div
+      id="المقاييس-الحية"
+      class="لوحة-بيانات"
+      style="bottom: 100px; left: 20px"
+    >
+      <h3>المقاييس الحية</h3>
+      <!-- سيتم ملؤها ديناميكياً -->
+    </div>
+
+    <!-- معلومات المجرة التفصيلية -->
+    <div id="تفاصيل-المجرة" class="مخفي"></div>
+
+    <!-- لوحة التحكم العلمية -->
+    <div class="لوحة-التحكم">
+      <div class="مجموعة-التحكم">
+        <label>نوع العنقود:</label>
+        <select id="نوع-العنقود">
+          <option value="منتظم">العنقود المنتظم</option>
+          <option value="غير_منتظم">العنقود غير المنتظم</option>
+          <option value="مهيمن_CD">المهيمن عليه بـ CD</option>
+          <option value="متحجر">المجموعة المتحجرة</option>
+        </select>
+      </div>
+
+      <div class="مجموعة-التحكم">
+        <label>مقياس الزمن: <span id="قيمة-مقياس-الزمن">1x</span></label>
+        <input
+          type="range"
+          id="مقياس-الزمن"
+          min="0.1"
+          max="10"
+          step="0.1"
+          value="1"
+        />
+      </div>
+
+      <div class="مجموعة-التحكم">
+        <label>
+          <input type="checkbox" id="تبديل-المادة-المظلمة" checked /> المادة
+          المظلمة
+        </label>
+        <label>
+          <input type="checkbox" id="تبديل-الوسط-بين-المجري" checked /> الوسط
+          بين المجري
+        </label>
+      </div>
+
+      <div class="مجموعة-التحكم">
+        <label>
+          <input type="checkbox" id="تبديل-متجهات-السرعة" /> متجهات السرعة
+        </label>
+        <label>
+          <input type="checkbox" id="تبديل-خريطة-الحرارة" /> خريطة الحرارة
+        </label>
+      </div>
+
+      <div class="مجموعة-التحكم">
+        <label> <input type="checkbox" id="وضع-البحث" /> وضع البحث </label>
+      </div>
+    </div>
+
+    <!-- تلميحات الاختصارات -->
+    <div class="تلميحات-الاختصارات">
+      <div>اختصارات: 1-4 أنواع العناقيد</div>
+      <div>D: المادة المظلمة | I: الوسط بين المجري | V: متجهات</div>
+      <div>T: خريطة الحرارة | R: وضع البحث | C: تصادم</div>
+    </div>
+
+    <!-- مؤشر وضع البحث -->
+    <div id="مؤشر-وضع-البحث" class="مؤشر-وضع-البحث">وضع البحث نشط</div>
+
+    <!-- مكتبات Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+
+    <!-- المحاكاة العلمية العربية -->
+    <script src="GalaxyClusters.js"></script>
+    <script src="../The_Timer/The_timer.js"></script>
+  </body>
+</html>

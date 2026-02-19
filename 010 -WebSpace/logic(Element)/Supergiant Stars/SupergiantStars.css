@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+
+#supergiant-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.info-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 0, 20, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 28px;
+  border-radius: 18px;
+  color: white;
+  max-width: 420px;
+  border: 2px solid rgba(255, 100, 50, 0.4);
+  box-shadow: 0 0 50px rgba(255, 100, 50, 0.3),
+    inset 0 0 30px rgba(255, 50, 0, 0.1);
+  z-index: 10;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 50px rgba(255, 100, 50, 0.3),
+      inset 0 0 30px rgba(255, 50, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 70px rgba(255, 100, 50, 0.5),
+      inset 0 0 40px rgba(255, 50, 0, 0.2);
+  }
+}
+
+.info-box h1 {
+  font-size: 3em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ff6b35, #ff0844, #ffaa00, #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  font-weight: 900;
+  text-shadow: 0 0 60px rgba(255, 107, 53, 0.8);
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.info-box p {
+  color: #e8e8e8;
+  font-size: 0.96em;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.info-box .stellar-info {
+  background: rgba(255, 100, 50, 0.12);
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 16px;
+  border-right: 4px solid #ff6b35;
+  border-left: 4px solid #ff0844;
+}
+
+.info-box .stellar-info p {
+  color: #ffb380;
+  font-size: 0.88em;
+  margin: 7px 0;
+  font-weight: 500;
+}
+
+.info-box .stats {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 2px solid rgba(255, 100, 50, 0.3);
+  font-size: 0.88em;
+  color: #bbb;
+}
+
+.info-box .stats p {
+  margin: 10px 0;
+  padding-right: 5px;
+}
+
+.star-types {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(10, 0, 20, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 14px;
+  color: white;
+  max-width: 280px;
+  border: 1px solid rgba(255, 100, 50, 0.3);
+  z-index: 10;
+}
+
+.star-types h3 {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: #ff6b35;
+  text-align: center;
+}
+
+.star-type {
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.star-type:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-5px);
+}
+
+.star-type.red {
+  border-left-color: #ff4444;
+}
+
+.star-type.blue {
+  border-left-color: #4488ff;
+}
+
+.star-type.yellow {
+  border-left-color: #ffdd44;
+}
+
+.star-type h4 {
+  font-size: 0.95em;
+  margin-bottom: 4px;
+}
+
+.star-type p {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(10, 0, 20, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 14px;
+  color: white;
+  border: 1px solid rgba(255, 100, 50, 0.3);
+  z-index: 10;
+}
+
+.controls button {
+  background: linear-gradient(135deg, #ff4444, #ff6b35);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.92em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 100, 50, 0.4);
+  margin: 5px;
+}
+
+.controls button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 100, 50, 0.6);
+  background: linear-gradient(135deg, #ff5555, #ff7b45);
+}
+
+.controls button:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .info-box {
+    max-width: 330px;
+    padding: 22px;
+    font-size: 0.9em;
+  }
+
+  .info-box h1 {
+    font-size: 2.5em;
+  }
+
+  .star-types {
+    max-width: 240px;
+    padding: 16px;
+  }
+
+  .controls {
+    padding: 16px;
+  }
+
+  .controls button {
+    padding: 12px 22px;
+    font-size: 0.86em;
+    margin: 4px;
+  }
+}
