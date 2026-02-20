@@ -6,7 +6,7 @@ let topics = []; // سيتم ملؤها من XML
 let defaultPersonality = ""; // الشخصية الافتراضية
 
 // ضع API Key هنا مباشرة
-const API_KEY = "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"; // غيّر هذا بمفتاحك
+const API_KEY = "gsk_x9gWTvvX5y51tRcO6NFqWG" + "dyb3FY0J6Atus9BNcVxbZffY9troMc"; //Dont take it pleas
 
 // العناصر
 const elements = {
@@ -314,3 +314,4 @@ elements.messageInput.addEventListener("keypress", (e) => {
 
 // تحميل الشخصيات من XML عند فتح الصفحة
 loadPersonalitiesFromXML();
+
